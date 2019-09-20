@@ -1,0 +1,18 @@
+<nb-card accent= "info">
+    <nb-card-header>
+        La valeur sera incrémentée au survol
+    </nb-card-header>
+    <nb-card-body>
+        <span (mouseover) = "onMouseOver()">{{prop1}}</span>
+    </nb-card-body>
+</nb-card>
+
+<nb-card accent= "info">
+    <nb-card-header>
+        <button nbButton outline status ="info" (click) = "onAdd()">+</button>
+        <button nbButton outline statud ="danger" (click) = "onRemove()">-</button>
+    </nb-card-header>
+    <nb-card-body>
+        {{prop2}}
+    </nb-card-body>
+</nb-card>

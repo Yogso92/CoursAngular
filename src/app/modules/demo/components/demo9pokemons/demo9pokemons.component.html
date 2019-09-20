@@ -1,0 +1,41 @@
+<nb-card accent= "info">
+        <nb-card-header>
+            Creation d'un Pokemon
+        </nb-card-header>
+        <nb-card-body>
+            <form [formGroup]= "formGroup" (ngSubmit) = "onSubmit(formGroup.value)">
+                <input fullWidth formControlName="Number" nbInput type="number" placeholder="Number" />
+                <input fullWidth formControlName="Name" nbInput type="text" placeholder="Name" />
+                <nb-select fullWidth formControlName ="Type1Id">
+                    <nb-option *ngFor='let type of listTypes | async' [value]="type.Id"  >
+                        {{type.Name}}
+                    </nb-option>
+                </nb-select>
+                <nb-select fullWidth formControlName ="Type2Id">
+                    <nb-option *ngFor='let type of listTypes | async' [value]="type.Id"  >
+                        {{type.Name}}
+                    </nb-option>
+                </nb-select>
+                <input fullWidth  type="file" placeholder="Picture" (change)="onPictureChanged($event)"/>
+                <button nbButton [disabled]="!formGroup.valid">Créer</button>
+            </form>
+        </nb-card-body>
+    </nb-card>
+    
+    <nb-card accent= "info">
+        <nb-card-header>    
+            Liste des Pokemons:
+        </nb-card-header>
+        <nb-card-body>
+            <nb-list>
+                <nb-list-item *ngFor = "let pkm of listPokemon | async">
+                    <nb-user size = "large"
+                                name = "{{pkm?.Name}}"
+                                title = "{{pkm?.Number}} {{' - '+pkm?.Type1}} {{(pkm.Type2 != null) ? ' / '+pkm.Type2 : ''}}"
+                                picture ="data:image/png;base64,{{pkm?.Picture}}">
+
+                        </nb-user>
+                </nb-list-item>
+            </nb-list>
+        </nb-card-body>
+    </nb-card>

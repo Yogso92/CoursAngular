@@ -1,0 +1,9 @@
+.clickable{
+    cursor: pointer;
+    nb-icon{
+        color: aqua;
+    };
+    &:hover nb-icon{
+        color: red;
+    };
+}

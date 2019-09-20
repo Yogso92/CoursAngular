@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="card col-3 m-2" *ngFor ="let product of products">
+            
+            <div class="card-body">
+                <img src="assets/images/{{product.image}}" class="card-img-top"  />
+                <h5 class = "card-title">{{product.name | uppercase}}</h5>
+                <span [ngClass]='{"barre": product.discount != null && product.discount != 0}'>{{product.price}}€</span>   
+                <span class="text-danger" *ngIf="product.discount != null && product.discount != 0">  {{product.price * (1-(product.discount || 0) /100) | number: '0.2-2' }}€</span>
+            </div>
+        </div>
+    </div>
+</div>

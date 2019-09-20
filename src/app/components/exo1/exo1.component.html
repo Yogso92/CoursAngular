@@ -1,0 +1,4 @@
+<p> Contenu de la propriété MaVariable: {{MaVariable}}</p>
+<button nbButton status ="info" (click)="start()" [disabled] = "IsStarted">Start</button>
+<button nbButton status = "danger" (click)="stop()" [disabled] = "!IsStarted">Stop</button>
+<button nbButton status = "warning" (click)= "reset()">Reset</button>

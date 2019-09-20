@@ -1,0 +1,19 @@
+<nb-card accent= "info">
+    <nb-card-header>
+        <p>Meteo selon Coordonnées</p>
+    </nb-card-header>
+    <nb-card-body>
+        <input nbInput type = "number" [(ngModel)] = "lat" placeholder="Lattitude"/>
+        <input nbInput type="number" [(ngModel)] = "long" placeholder="Longitude" />
+        <button nbButton hero (click) = "showWeather(lat, long)">Go</button>
+
+        
+    </nb-card-body>
+    <nb-card-footer>
+            <p>{{now?.main.temp}}°C à {{now?.name}}</p> 
+            <nb-card card-background-color= "blue" accent= "primary">
+                <nb-card-body status ="danger"><img src='http://openweathermap.org/img/wn/{{now?.weather[0].icon}}@2x.png'/></nb-card-body>
+            </nb-card>
+            
+    </nb-card-footer>
+</nb-card>

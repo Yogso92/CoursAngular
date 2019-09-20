@@ -1,0 +1,25 @@
+<nb-card accent= "info">
+    <nb-card-header>
+        Creation d'un type
+    </nb-card-header>
+    <nb-card-body>
+        <form [formGroup]= "typeForm" (ngSubmit) = "onSubmit(typeForm.value)">
+            <input formControlName="Name" nbInput type="text" placeholder="Name" />
+            
+            <button nbButton [disabled]="!typeForm.valid">Créer</button>
+        </form>
+    </nb-card-body>
+</nb-card>
+
+<nb-card accent= "info">
+    <nb-card-header>    
+        Liste des types:
+    </nb-card-header>
+    <nb-card-body>
+        <nb-list>
+            <nb-list-item *ngFor = "let type of listeTypes | async">
+                {{type.Name}}
+            </nb-list-item>
+        </nb-list>
+    </nb-card-body>
+</nb-card>

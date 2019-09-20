@@ -1,0 +1,36 @@
+
+<nb-card accent= "info">
+    <nb-card-header>
+            <label >number of entries per page:  <input name ="nbPerPage" nbInput type ="number" placeholder="Number of results per page" [(ngModel)] = "nbPerPage" /> </label>
+    </nb-card-header>
+    <nb-card-body>
+            <nb-list>
+                    
+                    <nb-list-item *ngFor="let hero of herosResult.data.results"  [routerLink]="['/hero-detail', hero.id]">
+                        <nb-user size = "large"
+                                name = "{{hero?.name}}"
+                                title = "{{hero?.description}}"
+                                picture ="{{hero?.thumbnail.path}}.{{hero?.thumbnail.extension}}">
+
+                        </nb-user>
+                    </nb-list-item>
+                    
+                </nb-list>
+    </nb-card-body>
+    <nb-card-footer>
+            <div class ="flex-btn">
+                    <button nbButton status="success" 
+                            [disabled]="herosResult?.data.offset  == 0 || this.herosResult == null"
+                            (click)="previous()">
+                                Previous
+                    </button>
+                    <button class = "end" nbButton status="success" 
+                            [disabled]="herosResult?.data.offset+herosResult?.data.count  >= herosResult?.data.total || this.herosResult == null"
+                            (click)="next()">
+                                Next
+                    </button>
+            </div>
+
+    </nb-card-footer>
+</nb-card>
+
